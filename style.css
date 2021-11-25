@@ -311,5 +311,9 @@ h3 {
     align-items: center;
   }
   .task-container {
-    width: 400px;
+    width: 300px;
+  }
+  .time-container {
+    width: 300px;
+  }
 }
