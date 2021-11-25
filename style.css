@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
+:root {
+  --main-bg-color: #527a7a;
+  --text-color: rgb(255, 255, 255);
+  --secondary-color: #94b8b8;
+}
+/*
+Dark Mode
+  --main-bg-color: #000000;
+  --text-color: rgb(255, 255, 255);
+  --secondary-color: #181313;
+*/
+body {
+  font-family: 'Kanit', sans-serif;
+  background-color: var(--main-bg-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  transition: 0.4s ease-in-out;
+}
+body.dark {
+  background-color: #000000;
+}
+
+h2 {
+  font-size: 60px;
+  user-select: none;
+}
+
+h3 {
+  font-size: 30px;
+  color: var(--text-color);
+  user-select: none;
+}
+
+.logo {
+  color: var(--text-color);
+  font-size: 40px;
+  margin: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo button {
+  border: none;
+  background-color: transparent;
+  font-size: 40px;
+  padding: 20px;
+  color: var(--text-color);
+}
+
+.container {
+  display: inline-flex;
+  justify-content: space-evenly;
+}
+
+.time-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--secondary-color);
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  transition: 0.4s ease-in-out;
+}
+
+.time-container.dark {
+  background-color: #181313;
+}
+
+.time-container .timer {
+  display: flex;
+}
+
+.time-container .timer button {
+  margin-left: 15px;
+  margin-top: 40px;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 25px;
+  color: var(--text-color);
+  cursor: pointer;
+  height: 27px;
+  width: 31px;
+}
+
+.clock {
+  background-color: var(--text-color);
+  color: black;
+  border-radius: 10px;
+  width: 120px;
+  text-align: center;
+}
+
+.clock p {
+  font-size: 22px;
+  font-family: 'Lato', sans-serif;
+  user-select: none;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: var(--secondary-color);
+  width: 600px;
+  margin: 10px;
+  border-radius: 10px;
+  transition: 0.4s ease-in-out;
+}
+
+.task-container.dark {
+  background-color: #181313;
+}
+
+.task-container .tasks {
+  padding-left: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  user-select: none;
+}
+
+.tasks li {
+  list-style: none;
+  height: 45px;
+  line-height: 45px;
+  position: relative;
+  background: #f2f2f2;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  padding: 0 15px;
+  cursor: default;
+  overflow: hidden;
+}
+
+.tasks li span {
+  position: absolute;
+  right: -45px;
+  color: var(--text-color);
+  width: 45px;
+  text-align: center;
+  background: red;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tasks li:hover span {
+  right: 0px;
+}
+
+.task-container .inputField {
+  display: flex;
+  height: 45px;
+  width: 100%;
+}
+
+.inputField input {
+  width: 85%;
+  height: 100%;
+  font-size: 17px;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+.inputField input:focus {
+  outline: none;
+}
+
+.inputField button {
+  width: 50px;
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: rgb(115, 255, 0);
+  color: var(--text-color);
+  font-size: 25px;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-top: 1px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.inputField button.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.container .footer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.footer span {
+  color: var(--text-color);
+}
+
+.footer button {
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: rgb(255, 68, 68);
+  color: var(--text-color);
+  font-size: 15px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-top: 1px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.footer button.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.settings-container {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: -300px;
+  margin-left: 25%;
+  width: 50%;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  transition: 0.4s ease-in-out;
+}
+
+.settings-container.dark {
+  background-color: #181313;
+}
+
+.settings-container.active {
+  bottom: 80px;
+}
+
+.settings-container .settings {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.settings-container .settings .study-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.settings-container .settings .break-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.settings-container .settings .save {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+}
+
+.settings-container .settings button {
+  height: 45px;
+  color: black;
+  background-color: var(--text-color);
+  border-radius: 5px;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.settings-container .settings input {
+  height: 45px;
+  width: 70px;
+  border-radius: 5px;
+  font-size: 17px;
+  border: none;
+  background-color: var(--text-color);
+  text-align: center;
+}
+
+.settings-container .settings input:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .settings-container {
+    bottom: -700px;
+  }
+  .settings-container .settings {
+    flex-direction: column;
+  }
+}

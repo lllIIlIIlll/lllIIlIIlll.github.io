@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Zone</title>
+</head>
+<body>
+  <div class="logo">
+    <h2>zone</h2>
+    <button class="theme"><i class="fas fa-moon"></i></button>
+  </div>
+
+ <div class="container">
+
+
+  <div class="time-container">
+    <div class="timer">
+      <h3><span class="mode">Timer</span></h3>
+      <button id="settings"><i class="fas fa-cog"></i></button>
+    </div>
+    <div class="clock">
+      <p><span class="minutes">0</span>:<span class="seconds">00</span></p>
+    </div>
+  </div>
+
+
+
+
+  <div class="task-container">
+    
+    <h3>Tasks</h3>
+
+    <div class="inputField">
+      <input class="addTask" type="text" placeholder="Add Task">
+      <button><i class="fas fa-plus"></i></button>
+    </div>
+
+    <ul class="tasks">
+
+    </ul>
+
+    <div class="footer">
+      <span>You have <span class="pendingTasks"></span> pending tasks</span>
+      <button>Clear All</button>
+    </div>
+
+  </div>
+
+ </div>
+
+ <div class="settings-container">
+  <div class="settings">
+    <div class="study-time">
+      <h3>Study</h3>
+      <input type="number" placeholder="min" min="0" max="120">
+    </div>
+    <div class="break-time">
+      <h3>Break</h3>
+      <input type="number" placeholder="min" min="0" max="120">
+    </div>
+    <div class="save">
+      <h3>Save</h3>
+      <button id="save">Save</button>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
