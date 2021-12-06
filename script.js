@@ -109,6 +109,10 @@ const saveBtn = document.getElementById('save')
 // getting break time input
 const breakInput = document.querySelector('.break-time input')
 
+// audio elements
+const breakAudio = new Audio('sounds/vicroy.mp3')
+const studyAudio = new Audio('sounds/knocked.mp3')
+
 let interval
 let countDownSeconds
 let countDownMinutes
@@ -124,6 +128,7 @@ saveBtn.onclick = () => {
 }
 
 function studyTime() {
+    studyAudio.play()
     interval = setInterval(start, 1000)
     document.querySelector('.seconds').innerHTML = 59
     countDownSeconds = 59
@@ -143,6 +148,7 @@ function start() {
         if (countDownMinutes == -1) {
             stop()
             countDownMinutes = breakInput.value - 1
+            breakAudio.play()
             breakTime()
             //document.querySelector('.minutes').innerHTML = '0'
             //document.querySelector('.seconds').innerHTML = '00'
@@ -172,6 +178,7 @@ function breakTim() {
         countDownMinutes--
         if (countDownMinutes == -1) {
             stop()
+            studyAudio.play()
             studyTime()
         }
         document.querySelector('.seconds').innerHTML = 59
