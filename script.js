@@ -91,7 +91,6 @@ clearAllbtn.onclick = () => {
 
 
 // timer & settings
-
 const settingsBtn = document.getElementById('settings')
 const settingsPage =  document.querySelector('.settings-container')
 settingsBtn.addEventListener('click', () => {
@@ -113,6 +112,7 @@ const breakInput = document.querySelector('.break-time input')
 const breakAudio = new Audio('sounds/vicroy.mp3')
 const studyAudio = new Audio('sounds/knocked.mp3')
 
+
 let interval
 let countDownSeconds
 let countDownMinutes
@@ -129,6 +129,7 @@ saveBtn.onclick = () => {
 
 function studyTime() {
     studyAudio.play()
+    pauseBtn.innerHTML = '<i class="fas fa-pause"></i>'
     interval = setInterval(start, 1000)
     document.querySelector('.seconds').innerHTML = 59
     countDownSeconds = 59
@@ -137,26 +138,28 @@ function studyTime() {
 }
 
 function start() {
-    countDownSeconds--
+    if (pause == false) {
+        countDownSeconds--
 
-    if (countDownSeconds >= 10) {
-        document.querySelector('.seconds').innerHTML = countDownSeconds
-    } else if (countDownSeconds >= 0){
-        document.querySelector('.seconds').innerHTML = '0' + countDownSeconds
-    } else {
-        countDownMinutes--
-        if (countDownMinutes == -1) {
-            stop()
-            countDownMinutes = breakInput.value - 1
-            breakAudio.play()
-            breakTime()
-            //document.querySelector('.minutes').innerHTML = '0'
-            //document.querySelector('.seconds').innerHTML = '00'
+        if (countDownSeconds >= 10) {
+            document.querySelector('.seconds').innerHTML = countDownSeconds
+        } else if (countDownSeconds >= 0){
+            document.querySelector('.seconds').innerHTML = '0' + countDownSeconds
         } else {
-            document.querySelector('.seconds').innerHTML = 59
-            countDownSeconds = 59
-            document.querySelector('.minutes').innerHTML = countDownMinutes
-        }
+            countDownMinutes--
+            if (countDownMinutes == -1) {
+                stop()
+                countDownMinutes = breakInput.value - 1
+                breakAudio.play()
+                breakTime()
+                //document.querySelector('.minutes').innerHTML = '0'
+                //document.querySelector('.seconds').innerHTML = '00'
+            } else {
+                document.querySelector('.seconds').innerHTML = 59
+                countDownSeconds = 59
+                document.querySelector('.minutes').innerHTML = countDownMinutes
+            }
+        }   
     }
 }
 
@@ -169,21 +172,23 @@ function breakTime() {
 }
 
 function breakTim() {
-    countDownSeconds--
-    if (countDownSeconds >= 10) {
-        document.querySelector('.seconds').innerHTML = countDownSeconds
-    } else if (countDownSeconds >= 0) {
-        document.querySelector('.seconds').innerHTML = '0' + countDownSeconds
-    } else {
-        countDownMinutes--
-        if (countDownMinutes == -1) {
-            stop()
-            studyAudio.play()
-            studyTime()
+    if (pause == false) {
+        countDownSeconds--
+        if (countDownSeconds >= 10) {
+            document.querySelector('.seconds').innerHTML = countDownSeconds
+        } else if (countDownSeconds >= 0) {
+            document.querySelector('.seconds').innerHTML = '0' + countDownSeconds
+        } else {
+            countDownMinutes--
+            if (countDownMinutes == -1) {
+                stop()
+                studyAudio.play()
+                studyTime()
+            }
+            document.querySelector('.seconds').innerHTML = 59
+            countDownSeconds = 59
+            document.querySelector('.minutes').innerHTML = countDownMinutes
         }
-        document.querySelector('.seconds').innerHTML = 59
-        countDownSeconds = 59
-        document.querySelector('.minutes').innerHTML = countDownMinutes
     }
 }
 
@@ -199,7 +204,21 @@ function toggleDarkMode() {
     document.querySelector('.time-container').classList.toggle('dark')
     document.querySelector('.task-container').classList.toggle('dark')
     document.querySelector('.settings-container').classList.toggle('dark')
-
 }
 
 theme.addEventListener('click', () => toggleDarkMode())
+
+// pause function
+const pauseBtn = document.getElementById('pause')
+var pause = false
+
+pauseBtn.addEventListener('click', () => {
+    if (pause == true) {
+        pauseBtn.innerHTML = '<i class="fas fa-pause"></i>'
+        pause = false
+    } else {
+        pauseBtn.innerHTML = '<i class="fas fa-play"></i>'
+        pause = true
+        
+    }
+})
