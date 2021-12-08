@@ -109,8 +109,8 @@ const saveBtn = document.getElementById('save')
 const breakInput = document.querySelector('.break-time input')
 
 // audio elements
-const breakAudio = new Audio('sounds/vicroy.mp3')
-const studyAudio = new Audio('sounds/knocked.mp3')
+const breakAudio = new Audio('sounds/breaksound.mp3')
+const studyAudio = new Audio('sounds/studysound.mp3')
 
 
 let interval
