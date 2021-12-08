@@ -116,6 +116,7 @@ const studyAudio = new Audio('sounds/knocked.mp3')
 let interval
 let countDownSeconds
 let countDownMinutes
+let isTimerActive = false
 
 saveBtn.onclick = () => {
     stop()
@@ -128,6 +129,7 @@ saveBtn.onclick = () => {
 }
 
 function studyTime() {
+    isTimerActive = true
     studyAudio.play()
     pauseBtn.innerHTML = '<i class="fas fa-pause"></i>'
     interval = setInterval(start, 1000)
@@ -213,10 +215,10 @@ const pauseBtn = document.getElementById('pause')
 var pause = false
 
 pauseBtn.addEventListener('click', () => {
-    if (pause == true) {
+    if (pause == true && isTimerActive == true) {
         pauseBtn.innerHTML = '<i class="fas fa-pause"></i>'
         pause = false
-    } else {
+    } else if (isTimerActive == true) {
         pauseBtn.innerHTML = '<i class="fas fa-play"></i>'
         pause = true
         
