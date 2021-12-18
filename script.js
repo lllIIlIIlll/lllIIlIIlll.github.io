@@ -130,6 +130,7 @@ saveBtn.onclick = () => {
 
 function studyTime() {
     isTimerActive = true
+    pause = false
     studyAudio.play()
     pauseBtn.innerHTML = '<i class="fas fa-pause"></i>'
     interval = setInterval(start, 1000)
